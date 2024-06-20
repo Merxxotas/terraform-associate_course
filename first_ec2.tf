@@ -1,9 +1,3 @@
-# Configuration of AWS provider
-provider "aws" {
-  region  = "sa-east-1"
-  profile = "brayanDevOps"
-}
-
 # Create a VPC (Free Tier)
 resource "aws_vpc" "my_vpc" {
   cidr_block           = "10.0.0.0/16"
@@ -89,6 +83,3 @@ resource "aws_instance" "my_first_ec2_since_terraform" {
     Name = "FirstEC2SinceTerraform"
   }
 }
-
-
-provider "azurerm" {}
