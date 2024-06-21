@@ -8,7 +8,6 @@ resource "aws_vpc" "my_vpc" {
     Name = "my_vpc"
   }
 }
-
 # Create a Subnet (Free Tier)
 resource "aws_subnet" "my_subnet" {
   vpc_id            = aws_vpc.my_vpc.id
