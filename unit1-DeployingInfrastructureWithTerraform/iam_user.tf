@@ -5,7 +5,7 @@ resource "aws_iam_user" "iam_user_terraform" {
     Name = "IAM_User_since_Terraform"
   }
 }
-# Attach the "AdministratorAccess" policy to the user
+# Attach the "IAMReadOnlyAccess" policy to the user
 resource "aws_iam_policy_attachment" "IAM_read_only_access" {
   name       = "IAM_read_only_access"
   users      = [aws_iam_user.iam_user_terraform.name]

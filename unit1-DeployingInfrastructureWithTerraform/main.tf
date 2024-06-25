@@ -2,11 +2,15 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 3.0"
+      version = "~> 5.0"
     }
     github = {
       source  = "integrations/github"
       version = "~> 6.0"
+    }
+    random = {
+      source  = "hashicorp/random"
+      version = "~> 3.0"
     }
   }
 }
@@ -18,6 +22,9 @@ provider "aws" {
 
 provider "github" {
   token = var.github_token
+}
+
+provider "random" {
 }
 
 variable "github_token" {
