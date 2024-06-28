@@ -31,6 +31,6 @@ output "ami_instance_type" {
   value = aws_instance.myec2.instance_type
 }
 
-# output "ami_subnet_id" {
-#   value = aws_instance.myec2.subnet_id
-# }
+output "ami_subnet_id" {
+  value = aws_instance.myec2.subnet_id
+}
