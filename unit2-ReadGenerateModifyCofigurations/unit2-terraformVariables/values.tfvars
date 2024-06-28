@@ -1,0 +1,10 @@
+vpn_ip                = "100.0.62.210/32"
+app_port              = 3001
+ssh_port              = 22
+ftp_port              = 21
+description_allow_tls = "Manage firewalls since terraform"
+description_app_port  = "Allow TCP traffic on app by port 3001"
+description           = "Allow HTTP traffic on port 80"
+ami                   = "ami-053602453dbcba9be"    # Amazon Linux Free tier eligible
+ami_instance_type     = "t2.micro"                 # Free tier eligible
+ami_subnet_id         = "subnet-0805a6fdb2a9e82c9" # Subnet ID created manually
