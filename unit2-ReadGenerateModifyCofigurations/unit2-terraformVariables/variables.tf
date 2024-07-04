@@ -1,42 +1,36 @@
-variable "vpn_ip" {
-  description = "value of the vpn ip"
+variable "vpc_id" {
+  description = "ID of the VPC where subnets will be created"
   type        = string
 }
 
-variable "app_port" {
-  #   default     = 3001
-  description = "value of the app port"
-  type        = number
+variable "subnet_cidrs" {
+  description = "List of CIDR blocks for the subnets"
+  type        = list(string)
 }
 
-variable "ssh_port" {
-  #   default     = 22
-  description = "value of the SSH port"
-  type        = number
+variable "azs" {
+  description = "List of Availability Zones"
+  type        = list(string)
 }
 
-variable "ftp_port" {
-  #   default     = 21
-  description = "value of the FTP port"
-  type        = number
+variable "vpn_ips" {
+  description = "List of VPN IPs for each instance"
+  type        = list(string)
 }
 
-variable "description" {
-  #   default     = "Allow HTTP traffic on port 80"
-  description = "value of the description"
-  type        = string
+variable "app_ports" {
+  description = "List of App ports for each instance"
+  type        = list(number)
 }
 
-variable "description_allow_tls" {
-  #   default     = "Manage firewalls since terraform"
-  description = "value of the description allow tls"
-  type        = string
+variable "ssh_ports" {
+  description = "List of SSH ports for each instance"
+  type        = list(number)
 }
 
-variable "description_app_port" {
-  #   default     = "Allow TCP traffic on app by port 3001"
-  description = "value of the description app port"
-  type        = string
+variable "ftp_ports" {
+  description = "List of FTP ports for each instance"
+  type        = list(number)
 }
 
 variable "ami" {
@@ -49,7 +43,17 @@ variable "ami_instance_type" {
   type        = string
 }
 
-variable "ami_subnet_id" {
-  description = "The ID of the subnet to launch the instance in."
+variable "count_ami_instance" {
+  description = "The number of instances to launch."
+  type        = number
+}
+
+variable "root_volume_size" {
+  description = "The size of the root volume in GB"
+  type        = number
+}
+
+variable "root_volume_type" {
+  description = "The type of the root volume (gp2 or gp3)"
   type        = string
 }

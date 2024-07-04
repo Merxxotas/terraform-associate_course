@@ -1,36 +1,47 @@
-output "description_allow_tls" {
-  value = aws_security_group.allow_tls.description
+output "azs" {
+  description = "List of Availability Zones"
+  value       = var.azs
+}
 
+output "vpn_ips" {
+  description = "List of VPN IPs for each instance"
+  value       = var.vpn_ips
 }
-output "description_app_port" {
-  value = aws_vpc_security_group_ingress_rule.app_port.description
-}
-output "vpn_ip_app_port" {
-  value = aws_vpc_security_group_ingress_rule.app_port.cidr_ipv4
-}
-output "description_ssh_port" {
-  value = aws_vpc_security_group_ingress_rule.ssh_port.description
 
+output "app_ports" {
+  description = "List of App ports for each instance"
+  value       = var.app_ports
 }
-output "vpn_ip_ssh_port" {
-  value = aws_vpc_security_group_ingress_rule.ssh_port.cidr_ipv4
 
+output "ssh_ports" {
+  description = "List of SSH ports for each instance"
+  value       = var.ssh_ports
 }
-output "description_ftp_port" {
-  value = aws_vpc_security_group_ingress_rule.ftp_port.description
+
+output "ftp_ports" {
+  description = "List of FTP ports for each instance"
+  value       = var.ftp_ports
 }
-output "vpn_ip_ftp_port" {
-  value = aws_vpc_security_group_ingress_rule.ftp_port.cidr_ipv4
+output "subnet_ids" {
+  value = [for subnet in aws_subnet.my_subnets : subnet.id]
 }
 
 output "ami" {
-  value = aws_instance.myec2.ami
+  value = [for instance in aws_instance.myec2 : instance.ami]
 }
 
 output "ami_instance_type" {
-  value = aws_instance.myec2.instance_type
+  value = [for instance in aws_instance.myec2 : instance.instance_type]
 }
 
 output "ami_subnet_id" {
-  value = aws_instance.myec2.subnet_id
+  value = [for instance in aws_instance.myec2 : instance.subnet_id]
+}
+
+output "root_volume_size" {
+  value = [for instance in aws_instance.myec2 : instance.root_block_device[0].volume_size]
+}
+
+output "storage_type" {
+  value = [for instance in aws_instance.myec2 : instance.root_block_device[0].volume_type]
 }
