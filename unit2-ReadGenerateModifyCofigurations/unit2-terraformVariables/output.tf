@@ -22,26 +22,41 @@ output "ftp_ports" {
   description = "List of FTP ports for each instance"
   value       = var.ftp_ports
 }
-output "subnet_ids" {
-  value = [for subnet in aws_subnet.my_subnets : subnet.id]
+output "developer_ami" {
+  value = [for instance in aws_instance.developer_ec2 : instance.ami]
+}
+output "developer_instance_type" {
+  value = [for instance in aws_instance.developer_ec2 : instance.instance_type]
 }
 
-output "ami" {
-  value = [for instance in aws_instance.myec2 : instance.ami]
+output "developer_subnet_id" {
+  value = [for instance in aws_instance.developer_ec2 : instance.subnet_id]
 }
 
-output "ami_instance_type" {
-  value = [for instance in aws_instance.myec2 : instance.instance_type]
+output "developer_root_volume_size" {
+  value = [for instance in aws_instance.developer_ec2 : instance.root_block_device[0].volume_size]
 }
 
-output "ami_subnet_id" {
-  value = [for instance in aws_instance.myec2 : instance.subnet_id]
+output "developer_storage_type" {
+  value = [for instance in aws_instance.developer_ec2 : instance.root_block_device[0].volume_type]
 }
 
-output "root_volume_size" {
-  value = [for instance in aws_instance.myec2 : instance.root_block_device[0].volume_size]
+output "administrative_ami" {
+  value = [for instance in aws_instance.administrative_ec2 : instance.ami]
 }
 
-output "storage_type" {
-  value = [for instance in aws_instance.myec2 : instance.root_block_device[0].volume_type]
+output "administrative_instance_type" {
+  value = [for instance in aws_instance.administrative_ec2 : instance.instance_type]
+}
+
+output "administrative_subnet_id" {
+  value = [for instance in aws_instance.administrative_ec2 : instance.subnet_id]
+}
+
+output "administrative_root_volume_size" {
+  value = [for instance in aws_instance.administrative_ec2 : instance.root_block_device[0].volume_size]
+}
+
+output "administrative_storage_type" {
+  value = [for instance in aws_instance.administrative_ec2 : instance.root_block_device[0].volume_type]
 }

@@ -35,7 +35,7 @@ variable "ftp_ports" {
 
 variable "ami" {
   description = "value of the ami for sa-east-1 (Free tier eligible)"
-  type        = string
+  type        = list(string)
 }
 
 variable "ami_instance_type" {
@@ -50,10 +50,15 @@ variable "count_ami_instance" {
 
 variable "root_volume_size" {
   description = "The size of the root volume in GB"
-  type        = number
+  type        = list(number)
 }
 
 variable "root_volume_type" {
-  description = "The type of the root volume (gp2 or gp3)"
+  description = "The type of the root volume"
   type        = string
+}
+
+variable "is_test" {
+  description = "If true, the resources will be created in the test environment"
+  type        = bool
 }
